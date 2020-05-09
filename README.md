@@ -4,4 +4,7 @@ Generic notes on things I explore.
 [Prometheus Federation](https://github.com/nrchakradhar/Notes/tree/master/PrometheusFederation)
 
 ## 10-05-2020
+
 - [ ] [Chosing DataStores](https://github.com/nrchakradhar/Notes/tree/master/HowToChooseDataStores)
+- [ ] How Istio works and useful debug commands
+- [ ] Kubernetes Application Lifecycle management
