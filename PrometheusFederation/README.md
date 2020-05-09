@@ -27,3 +27,5 @@ https://prometheus.io/docs/prometheus/latest/federation/
 https://www.robustperception.io/federation-what-is-it-good-for
 
 https://stackoverflow.com/questions/48751632/prometheus-federation-match-params-do-not-work
+
+Images are from Google Search. Missed the link. Will update once I find it.
