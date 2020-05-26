@@ -7,6 +7,10 @@ Generic notes on things I explore.
 
 - [x] [Chosing DataStores](https://github.com/nrchakradhar/Notes/tree/master/HowToChooseDataStores)
 
+## 26-05-2020
+
+- [x] [Dummy GRPC PY example](https://github.com/nrchakradhar/Notes/tree/master/pythonGrpc)
+
 ## To Do
 - [ ] How Istio works and useful debug commands
 - [ ] Kubernetes Application Lifecycle management
