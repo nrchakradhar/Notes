@@ -98,6 +98,7 @@ skinparam rectangle<<e_stereo>> {
 !define KubernetesEtcd(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "etcd")
 !define KubernetesNode(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "node")
 
+/'
 actor "Admin" as admin
 collections "Kubeflow\n<img:https://github.com/cncf/artwork/raw/master/projects/helm/icon/color/helm-icon-color.png {scale=0.1}>\nChart" as kfhelm
 
@@ -121,7 +122,7 @@ k8sapi -LEFT-> NotebooksCRD: Register
 k8sapi --> notebookConPod
 k8sapi --> notebookConSvc
 notebookConPod <-DOWN-> notebookConSvc: TCP:443
-/'
+
 KubernetesGroup("group", "group", "group")
 KubernetesSa("sa", "sa", "sa")
 KubernetesUser("user", "user", "user")
