@@ -1,0 +1,165 @@
+@startuml plant
+!include <tupadr3/common>
+' !include <dist/kubernetes_Common.puml>
+
+' Kubernetes
+' !define KubernetesPuml https://raw.githubusercontent.com/dcasati/kubernetes-PlantUML/master/dist
+
+
+' !includeurl KubernetesPuml/kubernetes_Context.puml
+' Colors
+' ##################################
+
+!define KUBERNETES_CLUSTER_COLOR #326CE5
+!define KUBERNETES_NS_COLOR #FF4216
+!define KUBERNETES_NODE_COLOR #096B24
+!define KUBERNETES_POD_COLOR #09E508
+!define KUBERNETES_SERVICE_COLOR #FCC133
+!define KUBERNETES_FONT_COLOR #000000
+!define KUBERNETES_BACKGROUND_COLOR #FFFFFF
+
+' Styling
+' ##################################
+
+skinparam rectangle<<cluster>> {
+    StereotypeFontColor KUBERNETES_FONT_COLOR
+    FontColor KUBERNETES_FONT_COLOR
+    BorderStyle line
+    BorderColor KUBERNETES_CLUSTER_COLOR
+    BackgroundColor KUBERNETES_BACKGROUND_COLOR
+    RoundCorner 25
+}
+
+skinparam rectangle<<namespace>> {
+    StereotypeFontColor KUBERNETES_FONT_COLOR
+    FontColor KUBERNETES_FONT_COLOR
+    BorderStyle line
+    BorderColor KUBERNETES_NS_COLOR
+    BackgroundColor KUBERNETES_BACKGROUND_COLOR
+    RoundCorner 25
+}
+
+' cluster
+!define Cluster(e_alias, e_label) rectangle "-e_label" <<cluster>> as e_alias
+' namespace
+!define Namespace(e_alias, e_label) rectangle "-e_label" <<namespace>> as e_alias
+
+scale max 1024 width
+skinparam defaultTextAlignment center
+!define ICON_SCALE 0.3
+!include <kubernetes/k8s-skinparam.puml>
+!include <kubernetes/k8s-sprites-labeled-full.puml>
+
+!define TECHN_FONT_SIZE 12
+
+skinparam rectangle<<e_stereo>> {
+    BackgroundColor White
+    BorderColor KUBERNETES_BORDER_COLOR
+    BorderStyle line
+}
+!define KubernetesEntity(e_alias, e_label, e_techn="", e_type) rectangle "==e_label\n<color:Blue><$e_type*ICON_SCALE></color>\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<e_stereo>> as e_alias
+!define KubernetesGroup(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "group")
+!define KubernetesSa(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "sa")
+!define KubernetesUser(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "user")
+!define KubernetesPv(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "pv")
+!define KubernetesJob(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "job")
+!define KubernetesPod(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "pod")
+!define KubernetesCrb(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "crb")
+!define KubernetesSts(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "sts")
+!define KubernetesIng(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "ing")
+!define KubernetesRole(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "role")
+!define KubernetesCm(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "cm")
+!define KubernetesNetpol(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "netpol")
+!define KubernetesNs(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "ns")
+!define KubernetesSecret(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "secret")
+!define KubernetesQuota(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "quota")
+!define KubernetesRb(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "rb")
+!define KubernetesEp(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "ep")
+!define KubernetesPvc(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "pvc")
+!define KubernetesCRole(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "c_role")
+!define KubernetesCronjob(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "cronjob")
+!define KubernetesDs(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "ds")
+!define KubernetesSc(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "sc")
+!define KubernetesSvc(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "svc")
+!define KubernetesDeploy(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "deploy")
+!define KubernetesCrd(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "crd")
+!define KubernetesHpa(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "hpa")
+!define KubernetesPsp(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "psp")
+!define KubernetesVol(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "vol")
+!define KubernetesRs(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "rs")
+!define KubernetesLimits(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "limits")
+!define KubernetesSched(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "sched")
+!define KubernetesCCM(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "c_c_m")
+!define KubernetesCM(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "c_m")
+!define KubernetesKubelet(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "kubelet")
+!define KubernetesApi(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "api")
+!define KubernetesKProxy(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "k_proxy")
+!define KubernetesMaster(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "master")
+!define KubernetesEtcd(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "etcd")
+!define KubernetesNode(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "node")
+
+actor "Admin" as admin
+collections "Kubeflow\n<img:https://github.com/cncf/artwork/raw/master/projects/helm/icon/color/helm-icon-color.png {scale=0.1}>\nChart" as kfhelm
+
+Cluster("a",""){
+KubernetesApi("k8sapi","", "")
+    rectangle "kubeflow <color:Blue><$ns*0.2></color>" <<namespace>>{
+
+        KubernetesPod("CentralDashboardPod", "Central\nDashboard", "")
+        KubernetesSvc("CentralDashboardSvc", "Central\nDashboard", "")
+        KubernetesPod("notebookConPod", "Notebook\nController", "")
+        KubernetesSvc("notebookConSvc", "", "")
+        KubernetesPod("JupyterWebAppPod", "JupyterWebApp", "")
+        KubernetesSvc("JupyterWebAppSvc", "JupyterWebAppSvc", "")
+        }
+    KubernetesCrd("NotebooksCRD", "Notebooks", "")
+}
+left to right direction
+admin ..> kfhelm: Install
+kfhelm ..> k8sapi
+k8sapi -LEFT-> NotebooksCRD: Register
+k8sapi --> notebookConPod
+k8sapi --> notebookConSvc
+notebookConPod <-DOWN-> notebookConSvc: TCP:443
+/'
+KubernetesGroup("group", "group", "group")
+KubernetesSa("sa", "sa", "sa")
+KubernetesUser("user", "user", "user")
+KubernetesPv("pv", "pv", "pv")
+KubernetesJob("job", "job", "job")
+KubernetesPod("pod", "pod", "pod")
+KubernetesCrb("crb", "crb", "crb")
+KubernetesSts("sts", "sts", "sts")
+KubernetesIng("ing", "ing", "ing")
+KubernetesRole("role", "role", "role")
+KubernetesCm("cm", "cm", "cm")
+KubernetesNetpol("netpol", "netpol", "netpol")
+KubernetesNs("ns", "ns", "ns")
+KubernetesSecret("secret", "secret", "secret")
+KubernetesQuota("quota", "quota", "quota")
+KubernetesRb("rb", "rb", "rb")
+KubernetesEp("ep", "ep", "ep")
+KubernetesPvc("pvc", "pvc", "pvc")
+KubernetesCRole("crole", "crole", "crole")
+KubernetesCronjob("cronjob", "cronjob", "cronjob")
+KubernetesDs("ds", "ds", "ds")
+KubernetesSc("sc", "sc", "sc")
+KubernetesSvc("svc", "svc", "svc")
+KubernetesDeploy("deploy", "deploy", "deploy")
+KubernetesCrd("crd", "crd", "crd")
+KubernetesHpa("hpa", "hpa", "hpa")
+KubernetesPsp("psp", "psp", "psp")
+KubernetesVol("vol", "vol", "vol")
+KubernetesRs("rs", "rs", "rs")
+KubernetesLimits("limits", "limits", "limits")
+KubernetesSched("sched", "sched", "sched")
+KubernetesCCM("c", "c", "c")
+KubernetesCM("c", "c", "c")
+KubernetesKubelet("kubelet", "kubelet", "kubelet")
+KubernetesApi("api", "api", "api")
+KubernetesKProxy("c", "c", "c")
+KubernetesMaster("master", "master", "master")
+KubernetesEtcd("etcd", "etcd", "etcd")
+KubernetesNode("node", "node", "node")
+'/
+@enduml
