@@ -57,7 +57,8 @@ skinparam rectangle<<e_stereo>> {
     BorderColor KUBERNETES_BORDER_COLOR
     BorderStyle line
 }
-!define KubernetesEntity(e_alias, e_label, e_techn="", e_type) rectangle "==e_label\n<color:Blue><$e_type*ICON_SCALE></color>\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<e_stereo>> as e_alias
+'!define KubernetesEntity(e_alias, e_label, e_techn="", e_type) rectangle "==e_label\n<color:Blue><$e_type*ICON_SCALE></color>\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<e_stereo>> as e_alias
+!define KubernetesEntity(e_alias, e_label, e_techn="", e_type) rectangle "==e_label\n<color:Blue><$e_type*ICON_SCALE></color>\n" <<e_stereo>> as e_alias
 !define KubernetesGroup(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "group")
 !define KubernetesSa(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "sa")
 !define KubernetesUser(e_alias, e_label, e_techn) KubernetesEntity(e_alias, e_label, e_techn, "user")
