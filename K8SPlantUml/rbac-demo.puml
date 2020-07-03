@@ -1,0 +1,73 @@
+@startuml plant
+!include <tupadr3/common>
+
+!define K8SPlantUml https://raw.githubusercontent.com/nrchakradhar/Notes/master/K8SPlantUml
+!includeurl K8SPlantUml/plant.puml
+/' 
+The various possible associations between
+Subject(s) - serviceaccount, user, user associated with group
+Role(s), ClusterRole(s) and their
+RoleBinding(s), ClusterRoleBinding(s) can be visualized.
+'/
+Cluster("demo","RBAC DEMO") #LightSkyBlue{
+
+'Define two clusterroles admin, proj
+    KubernetesCRole("adminCRole", "admin", "")
+    KubernetesCRole("projCRole", "proj", "")
+
+    KubernetesCrb("adminCrb1", "crb1", "")
+    KubernetesCrb("adminCrb2", "crb2", "")
+
+'Define independent user 'user1'
+    KubernetesUser("user1", "user1", "")
+
+'Define user 'user2' and his group 'group2'
+    KubernetesUser("user2", "user2", "")
+    KubernetesGroup("group2", "group2", "")
+
+/'
+Within 'Demo' namespace define different roles, serviceaccounts, rolebindings
+'/
+    rectangle "Demo\n<color:Blue><$ns*0.3></color>\r" <<namespace>> as kf #LightBlue{
+        KubernetesSa("sa1", "sa1", "")
+        KubernetesRole("role1", "role1", "")
+        KubernetesRb("roleb1", "roleb1", "")
+        together {
+        KubernetesSa("sa2", "sa2", "")
+        KubernetesRole("role2", "role2", "")
+        KubernetesRb("roleb2", "roleb2", "")
+        }
+
+        KubernetesSa("sa3", "sa3", "")
+        KubernetesRb("rolebRefCRole", "rolebRefCRole", "")
+
+        KubernetesRole("roleuser", "roleuser", "")
+        KubernetesRb("rolebUser", "rolebUser", "")
+    }
+}
+'sa1 is bound to admin clusterRole by crb1
+adminCrb1 -[thickness=2]-> adminCRole #Orange
+adminCrb1 -[thickness=2]->sa1 #DarkViolet
+
+'user2 is part of group2.
+'group2 is bound to clusterRole admin by crb2
+user2 -[thickness=2]-> group2 #Black
+adminCrb2 -[thickness=2]-> group2 #Black
+adminCrb2 -[thickness=2]-> adminCRole #Orange
+
+'Similar other various possible bindings for
+'serviceaccout, user with references to
+'role and clusterrole
+roleb1 -[thickness=2]-> sa1 #DarkViolet
+roleb1 -[thickness=2]-> role1 #Orange
+
+roleb2 -[thickness=2]-> sa2 #DarkViolet
+roleb2 -[thickness=2]-> role2 #Orange
+
+rolebRefCRole -[thickness=2]-> projCRole #Orange
+rolebRefCRole -[thickness=2]-> sa3 #DarkViolet
+
+rolebUser -[thickness=2]-> roleuser #Orange
+rolebUser -[thickness=2]-> user1 #IndianRed
+
+@enduml
