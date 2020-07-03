@@ -11,6 +11,10 @@ Generic notes on things I explore.
 
 - [x] [Dummy GRPC PY example](https://github.com/nrchakradhar/Notes/tree/master/pythonGrpc)
 
+## 03-07-2020
+
+- [x] [Plantuml Kubernetes](https://github.com/nrchakradhar/Notes/tree/master/K8SPlantUml)
+
 ## To Do
 - [ ] How Istio works and useful debug commands
 - [ ] Kubernetes Application Lifecycle management
