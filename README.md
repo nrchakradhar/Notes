@@ -22,7 +22,7 @@ Generic notes on things I explore.
 In Google Colab, with just pip install diagrams, we can generate cool Diagrams in python
 
 ## 31-01-2020
-- [] Understanding the metrics and query parts of Prometheus.
+- [] [Metrics and query parts of Prometheus](https://github.com/nrchakradhar/Notes/tree/master/PrometheusMetics)
 ## To Do
 - [ ] How Istio works and useful debug commands - Looks like I will never do :)
 - [ ] Kubernetes Application Lifecycle management
